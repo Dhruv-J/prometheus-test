@@ -1,0 +1,18 @@
+#how to start up a prometheus database
+sudo docker run --rm --name prometheustest -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+#have to use specified yaml file to run
+
+#how to open browser page with information
+http://localhost:9090/targets
+#go to the above url
+
+#get the prometheus IP
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' prometheustest
+
+#run grafana
+docker run --rm --name grafanatest -i -p 3000:3000 grafana/grafana
+
+#open grafana webpage on browser
+http://localhost:3000
+#username and password are both admin
+
